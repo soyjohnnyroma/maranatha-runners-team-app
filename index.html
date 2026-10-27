@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maranatha Runners Team | App Oficial</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script>
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es" class="dark"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Maranatha Runners Team | App Oficial&lt;/title&gt;
+  &lt;!-- Tailwind CSS CDN --&gt;
+  &lt;script src="//cdn.tailwindcss.com"&gt;&lt;/script&gt;
+  &lt;!-- FontAwesome Icons --&gt;
+  &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href="//fonts.googleapis.com/css2?family=Montserrat:wght@700;900&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
+  
+  &lt;script&gt;
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -28,209 +33,272 @@
         }
       }
     }
-  </script>
-  <style>
+  &lt;/script&gt;
+  &lt;style&gt;
     body { background-color: #121212; color: #FFFFFF; font-family: 'Inter', sans-serif; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
-  </style>
-</head>
-<body class="min-h-screen pb-20 md:pb-0">
+    .modal { display: none; position: fixed; inset: 0; z-index: 100; background-color: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="min-h-screen pb-20 md:pb-0"&gt;
 
-  <header class="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur border-b border-gray-800 px-4 py-3">
-    <div class="max-w-4xl mx-auto flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-brand-neon flex items-center justify-center font-black text-black text-xl">
+  &lt;!-- ENCABEZADO SUPERIOR --&gt;
+  &lt;header class="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur border-b border-gray-800 px-4 py-3"&gt;
+    &lt;div class="max-w-4xl mx-auto flex items-center justify-between"&gt;
+      &lt;div class="flex items-center space-x-3"&gt;
+        &lt;div class="w-10 h-10 rounded-full bg-brand-neon flex items-center justify-center font-black text-black text-xl shadow-lg shadow-brand-neon/20"&gt;
           MRT
-        </div>
-        <div>
-          <h1 class="font-display font-black text-lg tracking-wider text-white leading-none">MARANATHA</h1>
-          <p class="text-xs text-brand-neon font-bold tracking-widest">RUNNERS TEAM</p>
-        </div>
-      </div>
-      <a href="https://wa.me/573000000000?text=Hola,%20quiero%20más%20información%20sobre%20Maranatha%20Runners%20Team" target="_blank" 
-         class="bg-brand-red hover:bg-red-700 text-white font-bold text-xs px-3 py-2 rounded-lg transition shadow-lg flex items-center space-x-1">
-        <i class="fab font-bold fa-whatsapp text-sm"></i>
-        <span>Prueba Gratis</span>
-      </a>
-    </div>
-  </header>
-  <main class="max-w-4xl mx-auto px-4 py-6">
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;h1 class="font-display font-black text-lg tracking-wider text-white leading-none"&gt;MARANATHA&lt;/h1&gt;
+          &lt;p class="text-[10px] text-brand-neon font-bold tracking-widest uppercase"&gt;RUNNERS TEAM&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      
+      &lt;div class="flex items-center space-x-2"&gt;
+        &lt;button onclick="openLoginModal()" class="bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs px-3 py-2 rounded-lg border border-gray-700 transition flex items-center space-x-1"&gt;
+          &lt;i class="fas fa-user text-brand-neon"&gt;&lt;/i&gt;
+          &lt;span&gt;Acceso&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a href="//wa.me/573177156116?text=Hola,%20quiero%20más%20información%20sobre%20Maranatha%20Runners%20Team" target="_blank" 
+           class="bg-brand-red hover:bg-red-700 text-white font-bold text-xs px-3 py-2 rounded-lg transition shadow-lg flex items-center space-x-1"&gt;
+          &lt;i class="fab fa-whatsapp text-sm"&gt;&lt;/i&gt;
+          &lt;span&gt;Prueba Gratis&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
 
-    <nav class="flex border-b border-gray-800 mb-6 overflow-x-auto no-scrollbar space-x-2">
-      <button onclick="switchTab('entrenamientos')" id="btn-entrenamientos" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-brand-neon text-brand-neon whitespace-nowrap">
-        <i class="fas fa-running mr-2"></i>Entrenamientos
-      </button>
-      <button onclick="switchTab('calendario')" id="btn-calendario" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap">
-        <i class="fas fa-calendar-alt mr-2"></i>Calendario
-      </button>
-      <button onclick="switchTab('pr')" id="btn-pr" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap">
-        <i class="fas fa-trophy mr-2"></i>Muro de PR
-      </button>
-      <button onclick="switchTab('planes')" id="btn-planes" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap">
-        <i class="fas fa-tags mr-2"></i>Planes
-      </button>
-    </nav>
+  &lt;!-- CONTENIDO PRINCIPAL --&gt;
+  &lt;main class="max-w-4xl mx-auto px-4 py-6"&gt;
 
-    <section id="tab-entrenamientos" class="tab-content active space-y-6">
-      <div class="relative bg-gradient-to-r from-brand-card to-gray-900 border border-gray-800 rounded-2xl p-6 overflow-hidden">
-        <div class="relative z-10 space-y-3">
-          <span class="inline-block bg-brand-neon/20 text-brand-neon text-xs font-bold px-3 py-1 rounded-full">
-            📍 Sede San Fernando Nuevo, Cali
-          </span>
-          <h2 class="text-2xl font-display font-black text-white">Mismo objetivo, misma pasión, un solo equipo.</h2>
-          <p class="text-gray-300 text-sm">Únete a la comunidad oficial de atletas. Programación semanal de pistas, fondos largos y técnica de carrera.</p>
-          <a href="https://wa.me/573000000000?text=Hola!%20Quiero%20agendar%20mi%20entrenamiento%20de%20prueba%20gratuito" target="_blank"
-             class="inline-flex items-center space-x-2 bg-brand-red text-white font-bold px-5 py-3 rounded-xl hover:bg-red-700 transition">
-            <span>Agendar Clase de Prueba</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+    &lt;!-- BARRA DE PESTAÑAS --&gt;
+    &lt;nav class="flex border-b border-gray-800 mb-6 overflow-x-auto space-x-2 pb-1 no-scrollbar"&gt;
+      &lt;button onclick="switchTab('entrenamientos')" id="btn-entrenamientos" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-brand-neon text-brand-neon whitespace-nowrap"&gt;
+        &lt;i class="fas fa-running mr-2"&gt;&lt;/i&gt;Entrenamientos
+      &lt;/button&gt;
+      &lt;button onclick="switchTab('requisitos')" id="btn-requisitos" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap"&gt;
+        &lt;i class="fas fa-clipboard-list mr-2"&gt;&lt;/i&gt;Requisitos
+      &lt;/button&gt;
+      &lt;button onclick="switchTab('calendario')" id="btn-calendario" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap"&gt;
+        &lt;i class="fas fa-calendar-alt mr-2"&gt;&lt;/i&gt;Calendario
+      &lt;/button&gt;
+      &lt;button onclick="switchTab('pr')" id="btn-pr" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap"&gt;
+        &lt;i class="fas fa-trophy mr-2"&gt;&lt;/i&gt;Muro de PR
+      &lt;/button&gt;
+      &lt;button onclick="switchTab('planes')" id="btn-planes" class="tab-btn py-3 px-4 text-sm font-bold border-b-2 border-transparent text-gray-400 hover:text-white whitespace-nowrap"&gt;
+        &lt;i class="fas fa-tags mr-2"&gt;&lt;/i&gt;Planes
+      &lt;/button&gt;
+    &lt;/nav&gt;
 
-      <h3 class="font-display font-bold text-lg text-white">Programación Semanal</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex justify-between items-center">
-          <div>
-            <span class="text-xs text-brand-neon font-bold uppercase">Martes y Jueves</span>
-            <h4 class="font-bold text-white">Trabajo de Pista & Velocidad</h4>
-            <p class="text-xs text-gray-400">San Fernando Nuevo • 5:30 AM</p>
-          </div>
-          <i class="fas fa-stopwatch text-2xl text-brand-neon"></i>
-        </div>
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex justify-between items-center">
-          <div>
-            <span class="text-xs text-brand-neon font-bold uppercase">Sábados</span>
-            <h4 class="font-bold text-white">Fondo Largo (Long Run)</h4>
-            <p class="text-xs text-gray-400">Rutas de Cali & Alrededores • 6:00 AM</p>
-          </div>
-          <i class="fas fa-road text-2xl text-brand-neon"></i>
-        </div>
-      </div>
-    </section>
+    &lt;!-- 1. PESTAÑA: ENTRENAMIENTOS --&gt;
+    &lt;section id="tab-entrenamientos" class="tab-content active space-y-6"&gt;
+      &lt;div class="relative bg-gradient-to-r from-brand-card via-gray-900 to-brand-dark border border-gray-800 rounded-2xl p-6 overflow-hidden shadow-xl"&gt;
+        &lt;div class="relative z-10 space-y-3"&gt;
+          &lt;span class="inline-block bg-brand-neon/20 text-brand-neon text-xs font-bold px-3 py-1 rounded-full border border-brand-neon/30"&gt;
+            📍 Parque Ceibas de San Fernando (A la vuelta del Carulla)
+          &lt;/span&gt;
+          &lt;h2 class="text-2xl font-display font-black text-white leading-tight"&gt;Mismo objetivo, misma pasión, un solo equipo.&lt;/h2&gt;
+          &lt;p class="text-gray-300 text-sm leading-relaxed"&gt;Únete a la comunidad oficial de atletas. Programación semanal de pistas, fondos largos y técnica de carrera dirigidos por el Coach Ramiro Campos.&lt;/p&gt;
+          &lt;a href="//wa.me/573177156116?text=Hola!%20Quiero%20agendar%20mi%20entrenamiento%20de%20prueba%20gratuito" target="_blank"
+             class="inline-flex items-center space-x-2 bg-brand-red text-white font-bold px-5 py-3 rounded-xl hover:bg-red-700 transition shadow-lg shadow-brand-red/20"&gt;
+            &lt;span&gt;Agendar Clase de Prueba&lt;/span&gt;
+            &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
 
-    <section id="tab-calendario" class="tab-content space-y-6">
-      <div class="flex justify-between items-center">
-        <h3 class="font-display font-bold text-lg text-white">Calendario Oficial de Carreras</h3>
-      </div>
-      <div class="space-y-3">
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex items-center justify-between">
-          <div class="flex items-center space-x-4">
-            <div class="bg-brand-gray p-3 rounded-lg text-center min-w-[60px]">
-              <span class="block text-xs font-bold text-brand-neon uppercase">NOV</span>
-              <span class="block text-xl font-black text-white">15</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-white">Media Maratón de Cali</h4>
-              <p class="text-xs text-gray-400">Calle • 10K / 21K</p>
-            </div>
-          </div>
-          <span class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">Inscripciones</span>
-        </div>
+      &lt;h3 class="font-display font-bold text-lg text-white"&gt;Programación Semanal&lt;/h3&gt;
+      &lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;
+        &lt;div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex justify-between items-center shadow-md"&gt;
+          &lt;div&gt;
+            &lt;span class="text-xs text-brand-neon font-bold uppercase tracking-wider"&gt;Martes y Jueves&lt;/span&gt;
+            &lt;h4 class="font-bold text-white"&gt;Trabajo de Pista &amp; Velocidad&lt;/h4&gt;
+            &lt;p class="text-xs text-gray-400 mt-1"&gt;Parque Ceibas de San Fernando • 7:30 PM&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="p-3 bg-brand-dark rounded-lg text-brand-neon border border-gray-800"&gt;
+            &lt;i class="fas fa-stopwatch text-xl"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex justify-between items-center shadow-md"&gt;
+          &lt;div&gt;
+            &lt;span class="text-xs text-brand-neon font-bold uppercase tracking-wider"&gt;Sábados&lt;/span&gt;
+            &lt;h4 class="font-bold text-white"&gt;Fondo Largo (Long Run)&lt;/h4&gt;
+            &lt;p class="text-xs text-gray-400 mt-1"&gt;Rutas de Cali &amp; Alrededores • 8:00 PM&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="p-3 bg-brand-dark rounded-lg text-brand-neon border border-gray-800"&gt;
+            &lt;i class="fas fa-road text-xl"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
 
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex items-center justify-between">
-          <div class="flex items-center space-x-4">
-            <div class="bg-brand-gray p-3 rounded-lg text-center min-w-[60px]">
-              <span class="block text-xs font-bold text-brand-neon uppercase">DIC</span>
-              <span class="block text-xl font-black text-white">08</span>
-            </div>
-            <div>
-              <h4 class="font-bold text-white">Trail de la Montaña</h4>
-              <p class="text-xs text-gray-400">Trail • 15K / 30K</p>
-            </div>
-          </div>
-          <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">Próximamente</span>
-        </div>
-      </div>
-    </section>
-    <section id="tab-pr" class="tab-content space-y-6">
-      <h3 class="font-display font-bold text-lg text-white">Muro de Marcas Personales (PRs)</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl text-center space-y-2">
-          <h4 class="font-bold text-white">Récord 21K Masculino</h4>
-          <p class="text-2xl font-black text-brand-neon">1:18:45</p>
-          <p class="text-xs text-gray-400">Atleta MRT Pro</p>
-        </div>
-        <div class="bg-brand-card border border-gray-800 p-4 rounded-xl text-center space-y-2">
-          <h4 class="font-bold text-white">Récord 10K Femenino</h4>
-          <p class="text-2xl font-black text-brand-neon">42:10</p>
-          <p class="text-xs text-gray-400">Atleta MRT Pro</p>
-        </div>
-      </div>
-    </section>
-    <section id="tab-planes" class="tab-content space-y-6">
-      <div class="text-center space-y-2">
-        <h3 class="font-display font-black text-2xl text-white">Planes de Membresía</h3>
-        <p class="text-gray-400 text-sm">Soluciones personalizadas para la gestión y crecimiento de MRT</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-brand-card border border-gray-800 rounded-2xl p-6 flex flex-col justify-between space-y-4">
-          <div>
-            <span class="text-xs font-bold text-gray-400 uppercase">Membresía Inicial</span>
-            <h4 class="text-xl font-bold text-white">Acceso & Difusión</h4>
-            <div class="my-3">
-              <span class="text-3xl font-black text-white">$39 USD</span>
-              <span class="text-xs text-gray-400"> / mes</span>
-            </div>
-            <ul class="text-xs text-gray-300 space-y-2 border-t border-gray-800 pt-3">
-              <li>e3 Portal web oficial para captaciín</li>
-              <li>e3 Enlace a WhatsApp para agendar pruebas</li>
-              <li>e3 Calendario oficial de carreras mensual</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/573000000000?text=Hola,%20me%20interesa%20el%20Plan%20Basico" target="_blank" class="w-full text-center bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 rounded-xl transition text-sm">Elegir Básico</a>
-        </div>
-        <div class="bg-brand-card border-2 border-brand-red rounded-2xl p-6 flex flex-col justify-between space-y-4 relative shadow-2xl">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">MÁS POPULAR</span>
-          <div>
-            <span class="text-xs font-bold text-brand-neon uppercase">Equipo Activo</span>
-            <h4 class="text-xl font-bold text-white">Comunidad MRT Pro</h4>
-            <div class="my-3">
-              <span class="text-4xl font-black text-brand-neon">$59 USD</span>
-              <span class="text-xs text-gray-400"> / mes</span>
-            </div>
-            <ul class="text-xs text-gray-300 space-y-2 border-t border-gray-800 pt-3">
-              <li>e3 Todo lo del Plan Básico</li>
-              <li>e3 Muro interactivo de marcas (PRs)</li>
-              <li>e3 Programaciín semanal San Fernando Nuevo</li>
-              <li>e3 Avisos oficiales del Coach & soporte</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/573000000000?text=Hola,%20me%20interesa%20el%20Plan%20Club%20Pro" target="_blank" class="w-full text-center bg-brand-red hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm shadow-lg">Elegir Club Pro</a>
-        </div>
-        <div class="bg-brand-card border border-gray-800 rounded-2xl p-6 flex flex-col justify-between space-y-4">
-          <div>
-            <span class="text-xs font-bold text-gray-400 uppercase">Club Federado</span>
-            <h4 class="text-xl font-bold text-white">Elite & Expansiín</h4>
-            <div class="my-3">
-              <span class="text-3xl font-black text-white">$99 USD</span>
-              <span class="text-xs text-gray-400"> / mes</span>
-            </div>
-            <ul class="text-xs text-gray-300 space-y-2 border-t border-gray-800 pt-3">
-              <li>e3 Todo lo del Plan Club Pro</li>
-              <li>e3 Dominio web propio (.com)</li>
-              <li>e3 Perfiles individuales para atletas</li>
-              <li>e3 Soporte prioritario 24/7</li>
-          </ul>
-          </div>
-          <a href="https://wa.me/573000000000?text=Hola,%20me%20interesa%20el%20Plan%20Elite" target="_blank" class="w-full text-center bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 rounded-xl transition text-se">Elegir Elite</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    &lt;!-- 2. PESTAÑA: REQUISITOS --&gt;
+    &lt;section id="tab-requisitos" class="tab-content space-y-6"&gt;
+      &lt;div class="bg-brand-card border border-gray-800 rounded-2xl p-6 space-y-4 shadow-xl"&gt;
+        &lt;h3 class="font-display font-black text-xl text-white"&gt;Requisitos para Ingresar a MRT&lt;/h3&gt;
+        &lt;p class="text-gray-300 text-sm"&gt;Para formar parte de Maranatha Runners Team solo necesitas seguir estos sencillos pasos:&lt;/p&gt;
+        
+        &lt;div class="space-y-3 pt-2"&gt;
+          &lt;div class="flex items-start space-x-3 bg-brand-dark p-3.5 rounded-xl border border-gray-800"&gt;
+            &lt;span class="bg-brand-neon text-black font-black w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5"&gt;1&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white text-sm"&gt;Ganas y Compromiso&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400 mt-0.5"&gt;Actitud positiva para entrenar en equipo y superarte día a día.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
 
-  <script>
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('border-brand-neon', 'text-brand-neon');
-        el.classList.add('border-transparent', 'text-gray-400');
-      });
-      document.getElementById('tab-' + tabId).classList.add('active');
-      const activeBtn = document.getElementById('btn-' + tabId);
-      activeBtn.classList.remove('border-transpapent', 'text-gray-400');
-      activeBtn.classList.add('border-brand-neon', 'text-brand-neon');
-  }
-  </script>
-</body>
-  </html>
+          &lt;div class="flex items-start space-x-3 bg-brand-dark p-3.5 rounded-xl border border-gray-800"&gt;
+            &lt;span class="bg-brand-neon text-black font-black w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5"&gt;2&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white text-sm"&gt;Ficha Médica &amp; Formulario de Ingreso&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400 mt-0.5"&gt;Diligenciar la información básica de salud con el equipo administrativo.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class="flex items-start space-x-3 bg-brand-dark p-3.5 rounded-xl border border-gray-800"&gt;
+            &lt;span class="bg-brand-neon text-black font-black w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5"&gt;3&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white text-sm"&gt;Indumentaria Adecuada&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400 mt-0.5"&gt;Tenis adecuados para running, ropa deportiva cómoda e hidratación propia.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class="flex items-start space-x-3 bg-brand-dark p-3.5 rounded-xl border border-gray-800"&gt;
+            &lt;span class="bg-brand-neon text-black font-black w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5"&gt;4&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white text-sm"&gt;Elegir un Plan de Membresía&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400 mt-0.5"&gt;Elegir la modalidad que mejor se adapte a tus metas ($19, $59 o $99 USD/mes).&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class="flex items-start space-x-3 bg-brand-dark p-3.5 rounded-xl border border-gray-800"&gt;
+            &lt;span class="bg-brand-neon text-black font-black w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5"&gt;5&lt;/span&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white text-sm"&gt;Puntualidad&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400 mt-0.5"&gt;Llegar 5 minutos antes al Parque Ceibas de San Fernando (A la vuelta del Carulla).&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="pt-4 text-center"&gt;
+          &lt;a href="//wa.me/573177156116?text=Hola!%20Cumplo%20con%20los%20requisitos%20y%20quiero%20unirme%20a%20MRT" target="_blank"
+             class="inline-block bg-brand-neon text-black font-black px-6 py-3 rounded-xl hover:bg-lime-400 transition text-sm shadow-lg shadow-brand-neon/20"&gt;
+            ¡Quiero Unirme Ahora!
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 3. PESTAÑA: CALENDARIO --&gt;
+    &lt;section id="tab-calendario" class="tab-content space-y-6"&gt;
+      &lt;div class="flex justify-between items-center"&gt;
+        &lt;h3 class="font-display font-bold text-lg text-white"&gt;Calendario Oficial de Carreras&lt;/h3&gt;
+      &lt;/div&gt;
+      &lt;div class="space-y-3"&gt;
+        &lt;div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex items-center justify-between shadow-md"&gt;
+          &lt;div class="flex items-center space-x-4"&gt;
+            &lt;div class="bg-brand-gray p-3 rounded-lg text-center min-w-[60px] border border-gray-700"&gt;
+              &lt;span class="block text-xs font-bold text-brand-neon uppercase"&gt;NOV&lt;/span&gt;
+              &lt;span class="block text-xl font-black text-white"&gt;15&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white"&gt;Media Maratón de Cali&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400"&gt;Calle • 10K / 21K&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="bg-green-500/20 text-green-400 border border-green-500/30 text-xs font-bold px-3 py-1 rounded-full"&gt;Inscripciones&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class="bg-brand-card border border-gray-800 p-4 rounded-xl flex items-center justify-between shadow-md"&gt;
+          &lt;div class="flex items-center space-x-4"&gt;
+            &lt;div class="bg-brand-gray p-3 rounded-lg text-center min-w-[60px] border border-gray-700"&gt;
+              &lt;span class="block text-xs font-bold text-brand-neon uppercase"&gt;DIC&lt;/span&gt;
+              &lt;span class="block text-xl font-black text-white"&gt;08&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;h4 class="font-bold text-white"&gt;Trail de la Montaña&lt;/h4&gt;
+              &lt;p class="text-xs text-gray-400"&gt;Trail • 15K / 30K&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;span class="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-xs font-bold px-3 py-1 rounded-full"&gt;Próximamente&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 4. PESTAÑA: MURO DE PR --&gt;
+    &lt;section id="tab-pr" class="tab-content space-y-6"&gt;
+      &lt;h3 class="font-display font-bold text-lg text-white"&gt;Muro de Marcas Personales (PRs)&lt;/h3&gt;
+      &lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4"&gt;
+        &lt;div class="bg-brand-card border border-gray-800 p-5 rounded-xl text-center space-y-2 shadow-lg"&gt;
+          &lt;div class="w-12 h-12 bg-brand-neon/20 text-brand-neon border border-brand-neon/30 rounded-full flex items-center justify-center mx-auto text-xl font-bold"&gt;🥇&lt;/div&gt;
+          &lt;h4 class="font-bold text-white"&gt;Récord 21K (Media Maratón)&lt;/h4&gt;
+          &lt;p class="text-2xl font-black text-brand-neon"&gt;1:18:45&lt;/p&gt;
+          &lt;p class="text-xs text-gray-300 font-bold"&gt;Ramiro Campos&lt;/p&gt;
+          &lt;p class="text-[10px] text-gray-400"&gt;Director &amp; Entrenador MRT&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="bg-brand-card border border-gray-800 p-5 rounded-xl text-center space-y-2 shadow-lg"&gt;
+          &lt;div class="w-12 h-12 bg-brand-neon/20 text-brand-neon border border-brand-neon/30 rounded-full flex items-center justify-center mx-auto text-xl font-bold"&gt;🥇&lt;/div&gt;
+          &lt;h4 class="font-bold text-white"&gt;Récord 10K (Pista &amp; Calle)&lt;/h4&gt;
+          &lt;p class="text-2xl font-black text-brand-neon"&gt;36:10&lt;/p&gt;
+          &lt;p class="text-xs text-gray-300 font-bold"&gt;Ramiro Campos&lt;/p&gt;
+          &lt;p class="text-[10px] text-gray-400"&gt;Director &amp; Entrenador MRT&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 5. PESTAÑA: PLANES ($19, $59, $99 USD) --&gt;
+    &lt;section id="tab-planes" class="tab-content space-y-6"&gt;
+      &lt;div class="text-center space-y-2"&gt;
+        &lt;h3 class="font-display font-black text-2xl text-white"&gt;Planes de Membresía&lt;/h3&gt;
+        &lt;p class="text-gray-400 text-sm"&gt;Soluciones personalizadas para la gestión y crecimiento de MRT&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;
+        
+        &lt;!-- PLAN BÁSICO --&gt;
+        &lt;div class="bg-brand-card border border-gray-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 shadow-lg"&gt;
+          &lt;div&gt;
+            &lt;span class="text-xs font-bold text-gray-400 uppercase tracking-wider"&gt;Membresía Inicial&lt;/span&gt;
+            &lt;h4 class="text-xl font-bold text-white mt-1"&gt;Acceso &amp; Difusión&lt;/h4&gt;
+            &lt;div class="my-3"&gt;
+              &lt;span class="text-3xl font-black text-white"&gt;$19 USD&lt;/span&gt;
+              &lt;span class="text-xs text-gray-400"&gt; / mes&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="text-xs text-gray-300 space-y-3 border-t border-gray-800 pt-3"&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Portal web oficial para captación&lt;/li&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Enlace a WhatsApp para agendar pruebas&lt;/li&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Calendario oficial de carreras mensual&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;a href="//wa.me/573177156116?text=Hola,%20me%20interesa%20el%20Plan%20Básico%20($19/mes)" target="_blank"
+             class="w-full text-center bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 rounded-xl transition text-sm border border-gray-700"&gt;
+            Elegir Básico
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;!-- PLAN CLUB PRO (MÁS POPULAR) --&gt;
+        &lt;div class="bg-brand-card border-2 border-brand-red rounded-2xl p-6 flex flex-col justify-between space-y-4 relative shadow-2xl"&gt;
+          &lt;span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider shadow-md"&gt;
+            MÁS POPULAR
+          &lt;/span&gt;
+          &lt;div&gt;
+            &lt;span class="text-xs font-bold text-brand-neon uppercase tracking-wider"&gt;Equipo Activo&lt;/span&gt;
+            &lt;h4 class="text-xl font-bold text-white mt-1"&gt;Comunidad MRT Pro&lt;/h4&gt;
+            &lt;div class="my-3"&gt;
+              &lt;span class="text-4xl font-black text-brand-neon"&gt;$59 USD&lt;/span&gt;
+              &lt;span class="text-xs text-gray-400"&gt; / mes&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="text-xs text-gray-300 space-y-3 border-t border-gray-800 pt-3"&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Todo lo del Plan Básico&lt;/li&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Muro interactivo de marcas (PRs)&lt;/li&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Programación Parque Ceibas de San Fernando&lt;/li&gt;
+              &lt;li class="flex items-center"&gt;&lt;span class="text-brand-neon font-bold mr-2"&gt;✓&lt;/span&gt; Avisos oficiales del Coach &amp; soporte&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;a href="//wa.me/573177156116?text=Hola,%20me%20interesa%20el%20Plan%20Club%20Pro%20($59/mes)" target="_blank"
+             class="w-full text-center bg-brand-red hover:bg-red-70
